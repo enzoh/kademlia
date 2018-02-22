@@ -142,6 +142,7 @@ startRecvProcess kh = do
                 -- Try parsing the signal
                 case parse p received of
                     Left _    ->
+                      print received
                       logError kh ("Can't parse " ++ show (BS.length received) ++ " bytes from " ++ show peer)
                     Right sig -> do
                         logInfo kh ("Received signal " ++ show sig ++ " from " ++ show p)
